@@ -1,0 +1,18 @@
+CREATE TABLESPACE big_tbs_lizeth DATAFILE
+'D:\oracle\Quiz_Oracle\quiz1.DBF' SIZE 200M,
+'D:\oracle\Quiz_Oracle\quiz2.DBF' SIZE 200M,
+'D:\oracle\Quiz_Oracle\quiz3.DBF' SIZE 200M
+AUTOEXTEND ON NEXT 600M MAXSIZE 1000M
+EXTENT MANAGEMENT LOCAL
+SEGMENT SPACE MANAGEMENT AUTO
+ONLINE;
+
+CREATE PROFILE PRF_sin_limite LIMIT
+IDLE_TIME 15
+
+CREATE USER usuario1
+IDENTIFIED BY usuario123
+DEFAULT TABLESPACE big_tbs_lizeth 
+GRANT CREATE SESSION TO usuario1;
+
+alter user usuario1 profile PRF_sin_limite;
